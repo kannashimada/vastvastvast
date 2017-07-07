@@ -1,2 +1,13 @@
 <h1>キャンペーン編集</h1>
-<% #TODO %>
+<h1>Edit Campaign No.<%= @campaign.id%></h1>
+
+<div class = "col-xs-6">
+  <div class="row">
+    
+    <%= render "form", campaign: @campaign %>
+    
+    <%= link_to "Cancel", campaigns_path, class: "btn btn-warning pull-right" %>
+    <%= link_to "Delete", @campaign, method: :delete, data: { confirm: "Delete This Campaign? \n This Operation Cannot be Undone" }, class: "btn btn-danger pull-right" %>
+    
+  </div>
+</div>

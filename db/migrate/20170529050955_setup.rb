@@ -2,6 +2,8 @@ class Setup < ActiveRecord::Migration[5.0]
   def change
     create_table :campaigns do |t|
       t.string :name
+      t.integer :campaign_id
+      t.integer :cuepoint_id
       t.datetime :start_at
       t.datetime :end_at
       t.integer :limit_start
@@ -19,6 +21,8 @@ class Setup < ActiveRecord::Migration[5.0]
     add_index :cuepoints, :deleted_at
 
     create_table :campaigns_cuepoints, id: false do |t|
+      t.integer :campaign_id
+      t.integer :cuepoint_id
       t.references :cuepoint, foreign_key: false, null: false
       t.references :campaign, foreign_key: false, null: false
     end

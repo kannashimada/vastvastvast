@@ -1,2 +1,35 @@
 <h1>キャンペーン一覧</h1>
-<% #TODO %>
+
+<%= link_to 'Create Campaign', new_campaign_path, class: "btn btn-primary"%>
+
+<% if @campaigns.any? %>
+  <table class="table table-bordered table-condensed table-hover table-striped">
+    
+    <thread>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>start_at</th>
+        <th>end_at</th>
+        <th>limit_start</th>
+        <!--<th>movie_url</th>-->
+        <th>created_at</th>
+        <th>updated_at</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @campaigns.each do |campaign| %>
+        <tr>
+          <td><%= link_to campaign.id, edit_campaign_path(campaign) %></td>
+          <td><%= campaign.name %></td>
+          <td><%= campaign.start_at.in_time_zone("Tokyo") %></td>
+          <td><%= campaign.end_at.in_time_zone("Tokyo") %></td>
+          <td><%= campaign.limit_start %></td>
+          <td><%= campaign.created_at.in_time_zone("Tokyo") %></td>
+          <td><%= campaign.updated_at.in_time_zone("Tokyo") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    
+  </table>
+<% end %>

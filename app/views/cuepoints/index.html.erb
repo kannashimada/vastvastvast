@@ -1,2 +1,28 @@
 <h1>キューポイント一覧</h1>
-<% #TODO %>
+
+<%= link_to 'キューポイント新規登録', new_cuepoint_path, class: "btn btn-primary" %>
+
+<% if @cuepoints.any? %>
+  <table class="table table-bordered table-condensed table-hover table-striped">
+    
+   <thread>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @cuepoints.each do |cuepoint| %>
+        <tr>
+          <td><%= link_to cuepoint.id, edit_cuepoint_path(cuepoint) %></td>
+          <td><%= cuepoint.name %></td>
+          <td><%= cuepoint.created_at.in_time_zone("Tokyo") %></td>
+          <td><%= cuepoint.updated_at.in_time_zone("Tokyo") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    
+ </table>
+<% end %>

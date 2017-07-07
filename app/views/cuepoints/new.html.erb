@@ -1,2 +1,11 @@
 <h1>キューポイント登録</h1>
-<% #TODO %>
+
+<div class = "col-xs-6">
+  <div class="row">
+    
+   <%= render "form", cuepoint: @cuepoint %>
+    
+   <%= link_to "やめる", cuepoints_path, class: "btn btn-warning pull-right" %>
+    
+ </div>
+</div>

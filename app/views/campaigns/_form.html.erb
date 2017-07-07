@@ -1,0 +1,47 @@
+<%= form_for(campaign) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Campaign Name" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+        
+  <div class="form-group">
+    <%= f.label :start_at, "start_at" %>
+    <div class="input-group date datetimepicker">
+      <%= f.text_field :start_at, class: "form-control", placeholder: "YYYY/MM/DD HH:mm" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+      
+  <div class="form-group">
+    <%= f.label :end_at, "end_at" %>
+    <div class="input-group date datetimepicker">
+      <%= f.text_field :end_at, class: "form-control", placeholder: "YYYY/MM/DD HH:mm" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :limit_start, "limit_start" %>
+    <%= f.text_field :limit_start, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :movie_url, "movie_url" %>
+    <%= f.text_field :movie_url, class: "form-control" %>
+  </div>
+  
+  <div class="check_box" >
+    <%= f.collection_check_boxes(:cuepoint_ids, Cuepoint.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+      <br>
+    <% end %>
+  </div>
+  
+   <%= f.submit "Submit", class: "btn btn-primary"%>
+   
+<% end %>

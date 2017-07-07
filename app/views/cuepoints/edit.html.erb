@@ -1,2 +1,16 @@
-<h1>キューポイント編集</h1>
-<% #TODO %>
+<h1>キューポイント No.<%= @cuepoint.id%>の編集</h1>
+
+<div class = "col-xs-6">
+  <div class="row">
+    
+   <%= render "form", cuepoint: @cuepoint %>
+    
+   <div class = "vast_url">
+      <%= vast_url(@cuepoint) %>
+    </div>
+    
+   <%= link_to "やめる", cuepoints_path, class: "btn btn-warning pull-right" %>
+    <%= link_to "けす", @cuepoint, method: :delete, data: { confirm: "このキューポイントを削除しますか？" }, class: "btn btn-danger pull-right" %>
+    
+ </div>
+</div>

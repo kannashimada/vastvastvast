@@ -1,2 +1,10 @@
 <h1>キャンペーン登録</h1>
-<% #TODO %>
+<div class = "col-xs-6">
+  <div class="row">
+    
+    <%= render "form", campaign: @campaign %>
+    
+    <%= link_to "Cancel", campaigns_path, class: "btn btn-warning pull-right" %>
+    
+  </div>
+</div>

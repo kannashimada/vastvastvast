@@ -1,38 +1,52 @@
 # Cue Point コントローラ
 class CuepointsController < ApplicationController
-  # 一覧
+before_action :set_cuepoint, only: [:edit, :update, :destroy]
+  
   def index
-    # TODO
+    @cuepoints = Cuepoint.all
   end
-
-  # 新規
+  
   def new
-    # TODO
+    @cuepoint = Cuepoint.new
   end
-
-  # 作成
-  def create
-    # TODO
-  end
-
-  # 編集
-  def edit
-    # TODO
-  end
-
-  # 更新
-  def update
-    # TODO
-  end
-
-  # 削除
-  def destroy
-    # TODO
-  end
-
-  private
-    # キューポイント用パラメータ
-    def cuepoint_params
-      # TODO
+  
+ def create
+    @cuepoint = Cuepoint.new(cuepoint_params)
+    if @cuepoint.save
+      flash[:success] = "キューポイントを登録しました"
+      redirect_to cuepoints_url
+    else
+      flash.now[:danger] = "Invalid Values"
+      render :new
     end
+ end
+  
+ def edit
+ end
+  
+ def update
+    if @cuepoint.update(cuepoint_params)
+      flash[:success] = "キューポイントを登録しました"
+      redirect_to cuepoints_url
+    else
+      flash.now[:danger] = "Invalid Values"
+      render :edit
+    end
+ end
+  
+ def destroy
+    @cuepoint.destroy
+    flash[:success] = 'キューポイントを削除しました'
+    redirect_to cuepoints_url
+ end
+  
+ private
+  
+ def set_cuepoint
+     @cuepoint = Cuepoint.find(params[:id])
+ end
+  
+ def cuepoint_params
+    params.require(:cuepoint).permit(:name)
+ end
 end
